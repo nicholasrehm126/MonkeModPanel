@@ -221,6 +221,5 @@ project.lock.json
 # UWP Projects
 AppPackages/
 
-#####
-# End of core ignore list, below put you custom 'per project' settings (patterns or path)
-#####
+# make your own
+**/Directory.Build.[Pp]rops
