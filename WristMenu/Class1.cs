@@ -156,11 +156,12 @@ namespace Monke_Mod_Panel
             ButtonPresser.GetComponent<Renderer>().material = new Material(Shader.Find("GorillaTag/UberShader"));
             ButtonPresser.GetComponent<Renderer>().material.color = Color.red;
 
-            GameObject.Destroy(menu.GetComponent<BoxCollider>());
+            menu.GetComponent<Collider>().Destroy();
             
             Rigidbody rb = ButtonPresser.AddComponent<Rigidbody>();
             rb.useGravity = false;
             rb.isKinematic = true;
+            ButtonPresser.GetComponent<Collider>().isTrigger = true;
 
             GameObject textObject = new GameObject("Title");
             textObject.transform.SetParent(menu.transform, false);
@@ -220,7 +221,7 @@ namespace Monke_Mod_Panel
                 BoxCollider collider = button.GetComponent<BoxCollider>();
                 collider.isTrigger = true;
 
-                var trigger = button.AddComponent<ModButtonTrigger>();
+                ModButtonTrigger trigger = button.AddComponent<ModButtonTrigger>();
                 trigger.Mod = mod;
                 trigger.Renderer = rend;
                 

@@ -12,10 +12,10 @@ namespace Monke_Mod_Panel
 
         public static AudioClip GetClip(string resourcePath)
         {
-            if (clipCache.TryGetValue(resourcePath, out var cached))
+            if (clipCache.TryGetValue(resourcePath, out AudioClip cached))
                 return cached;
 
-            var asm = Assembly.GetExecutingAssembly();
+            Assembly asm = Assembly.GetExecutingAssembly();
             using Stream stream = asm.GetManifestResourceStream(resourcePath);
 
             if (stream == null)
@@ -42,7 +42,7 @@ namespace Monke_Mod_Panel
 
         private static AudioClip LoadWav(Stream stream, string clipName)
         {
-            using var reader = new WaveFileReader(stream);
+            using WaveFileReader reader = new WaveFileReader(stream);
 
             int channels = reader.WaveFormat.Channels;
             int sampleRate = reader.WaveFormat.SampleRate;
