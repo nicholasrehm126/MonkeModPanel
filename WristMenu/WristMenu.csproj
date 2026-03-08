@@ -33,6 +33,15 @@
       <Reference Include="Fusion.Unity">
         <HintPath>$(GameAssemblyPath)\Fusion.Unity.dll</HintPath>
       </Reference>
+      <Reference Include="GorillaLibrary">
+        <HintPath>..\..\..\.steam\steam\steamapps\common\Gorilla Tag\Mods\GorillaLibrary.dll</HintPath>
+      </Reference>
+      <Reference Include="GorillaLibrary.GameModes">
+        <HintPath>..\..\..\.steam\steam\steamapps\common\Gorilla Tag\Mods\GorillaLibrary.GameModes.dll</HintPath>
+      </Reference>
+      <Reference Include="KID">
+        <HintPath>..\..\..\.steam\steam\steamapps\common\Gorilla Tag\Gorilla Tag_Data\Managed\KID.dll</HintPath>
+      </Reference>
       <Reference Include="MelonLoader">
         <HintPath>$(GamePath)\MelonLoader\net35\MelonLoader.dll</HintPath>
       </Reference>

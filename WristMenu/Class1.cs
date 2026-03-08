@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using GorillaLibrary.GameModes.Attributes;
 using Monke_Mod_Panel.Attributes;
 using TMPro;
 using UnityEngine;
@@ -14,6 +15,7 @@ using UnityEngine.XR;
 
 namespace Monke_Mod_Panel
 {
+    [ModdedGamemode]
     public class Core : MelonMod
     {
         public static Core Instance;
@@ -21,18 +23,14 @@ namespace Monke_Mod_Panel
         public static List<Mod> Mods = new List<Mod>();
         public GameObject ButtonPresser;
 
-        GameObject menu;
-        GameObject clicker;
-        List<GameObject> btnObj = new List<GameObject>();
-
-        Vector3 targetScale;
-        Vector3 closedScale = Vector3.zero;
-        Vector3 openScale = new Vector3(0.2f, 0.3f, 0.02f);
-
-        bool menuOpen = false;
-        bool animating = false;
-        float animSpeed = 8f;
-
+        private List<GameObject> btnObj = new List<GameObject>();
+        private GameObject menu;
+        private Vector3 targetScale;
+        private Vector3 closedScale = Vector3.zero;
+        private Vector3 openScale = new Vector3(0.2f, 0.3f, 0.02f);
+        private bool menuOpen = false;
+        private bool animating = false;
+        private float animSpeed = 8f;
         private int currentPage = 0;
         private bool prevLeftPrimary = false;
         private bool prevLeftSecondary = false;
@@ -48,7 +46,6 @@ namespace Monke_Mod_Panel
             LoggerInstance.Msg("Initialized.");
             
             LoadMods();
-            GorillaTagger.OnPlayerSpawned(CreateMenu);
             
             if (AudioUtil.GetClip("WristMenu.Resources.close.wav") == null)
                 LoggerInstance.Error("Could not find WritstMenu.Resources.close.wav");
@@ -57,9 +54,24 @@ namespace Monke_Mod_Panel
                 LoggerInstance.Error("Could not find WritstMenu.Resources.open.wav");
         }
 
+        [ModdedGamemodeJoin]
+        public void OnModdedJoin()
+        {
+            CreateMenu();
+        }
+
+        [ModdedGamemodeLeave]
+        public void OnModdedLeave()
+        {
+            menu.Destroy();
+            ButtonPresser.Destroy();
+        }
+
         public override void OnUpdate()
         {
             if (!menu) return;
+            
+            ButtonPresser.SetActive(menu.activeSelf);
             
             const int modsPerPage = 5;
             
@@ -87,7 +99,7 @@ namespace Monke_Mod_Panel
                 }
             }
 
-            if (Mods.Count > modsPerPage)
+            if (Mods.Count > modsPerPage && menu.activeSelf)
             {
                 bool primaryPressed = ControllerInputPoller.instance.leftControllerPrimaryButton;
                 bool secondaryPressed = ControllerInputPoller.instance.leftControllerSecondaryButton;
@@ -153,10 +165,10 @@ namespace Monke_Mod_Panel
             
             menu.GetComponent<Renderer>().material = new Material(Shader.Find("GorillaTag/UberShader"));
             menu.GetComponent<Renderer>().material.color = Color.black;
-            ButtonPresser.GetComponent<Renderer>().material = new Material(Shader.Find("GorillaTag/UberShader"));
-            ButtonPresser.GetComponent<Renderer>().material.color = Color.red;
+            // ButtonPresser.GetComponent<Renderer>().material = new Material(Shader.Find("GorillaTag/UberShader"));
+            // ButtonPresser.GetComponent<Renderer>().material.color = Color.red;
 
-            ButtonPresser.layer = (int)UnityLayer.GorillaHand;
+            // ButtonPresser.layer = (int)UnityLayer.GorillaHand;
 
             menu.GetComponent<Collider>().Destroy();
             
