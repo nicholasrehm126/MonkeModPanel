@@ -156,6 +156,8 @@ namespace Monke_Mod_Panel
             ButtonPresser.GetComponent<Renderer>().material = new Material(Shader.Find("GorillaTag/UberShader"));
             ButtonPresser.GetComponent<Renderer>().material.color = Color.red;
 
+            ButtonPresser.layer = (int)UnityLayer.GorillaHand;
+
             menu.GetComponent<Collider>().Destroy();
             
             Rigidbody rb = ButtonPresser.AddComponent<Rigidbody>();
