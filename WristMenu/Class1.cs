@@ -63,6 +63,12 @@ namespace Monke_Mod_Panel
         [ModdedGamemodeLeave]
         public void OnModdedLeave()
         {
+            foreach (Mod mod in Mods)
+            {
+                if (mod.Enabled)
+                    mod.OnDisable();
+            }
+            
             menu.Destroy();
             ButtonPresser.Destroy();
         }
