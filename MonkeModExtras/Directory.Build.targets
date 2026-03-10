@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Project>
-    <Target Name="Copy to Mods" AfterTargets="PostBuildEvent">
+    <Target Name="copy to mods" AfterTargets="PostBuildEvent">
         <Exec Command="COPY &quot;$(TargetPath)&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Gorilla Tag\Mods&quot;" />
     </Target>
 </Project>

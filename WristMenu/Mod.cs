@@ -20,7 +20,10 @@ public abstract class Mod
     public virtual void OnEnable() { }
     public virtual void OnUpdate() { }
     public virtual void OnDisable() { }
-
+    
+    public virtual void OnModdedLeave(){}
+    public virtual void OnModdedJoin(){}
+    
     public virtual void OnClicked()
     {
         if (Toggleable)

@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\WristMenu\WristMenu.csproj" />
+      <ProjectReference Include="..\WristMenu\WristMenu.csproj" />
         <Reference Include="0Harmony">
             <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Gorilla Tag\MelonLoader\net35\0Harmony.dll</HintPath>
         </Reference>
@@ -37,10 +37,10 @@
             <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Gorilla Tag\Gorilla Tag_Data\Managed\Fusion.Unity.dll</HintPath>
         </Reference>
         <Reference Include="GorillaLibrary">
-            <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Gorilla Tag\Mods\GorillaLibrary.dll</HintPath>
+          <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Gorilla Tag\Mods\GorillaLibrary.dll</HintPath>
         </Reference>
         <Reference Include="GorillaLibrary.GameModes">
-            <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Gorilla Tag\Mods\GorillaLibrary.GameModes.dll</HintPath>
+          <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Gorilla Tag\Mods\GorillaLibrary.GameModes.dll</HintPath>
         </Reference>
         <Reference Include="MelonLoader">
             <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Gorilla Tag\MelonLoader\net35\MelonLoader.dll</HintPath>

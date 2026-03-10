@@ -58,6 +58,10 @@ namespace Monke_Mod_Panel
         public void OnModdedJoin()
         {
             CreateMenu();
+            foreach (Mod mod in Mods)
+            {
+                mod.OnModdedJoin();
+            }
         }
 
         [ModdedGamemodeLeave]
@@ -65,6 +69,10 @@ namespace Monke_Mod_Panel
         {
             menu.Destroy();
             ButtonPresser.Destroy();
+            foreach (Mod mod in Mods)
+            {
+                mod.OnModdedLeave();
+            }
         }
 
         public override void OnUpdate()
